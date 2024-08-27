@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./social-media-list.component.scss']
 })
 export class SocialMediaListComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

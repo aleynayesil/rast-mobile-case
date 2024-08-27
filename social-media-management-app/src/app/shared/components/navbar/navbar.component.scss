@@ -1,0 +1,40 @@
+.header{
+    padding: 1rem 0;
+
+    .toggle-menu{
+        display: none;
+    }
+    .navbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .menu{
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            .menu-links{
+                list-style: none;
+                .link{
+                    text-decoration:none;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .socials{
+            .social-list{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                list-style: none;
+                .social{
+                    a{
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}

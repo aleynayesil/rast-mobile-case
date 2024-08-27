@@ -7,6 +7,8 @@ import { HomeComponent } from './layouts/home/home.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SocialMediaListComponent } from './modules/home/social-media-list/social-media-list.component';
+import { SigninComponent } from './modules/auth/signin/signin.component';
+import { SignupComponent } from './modules/auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SocialMediaListComponent } from './modules/home/social-media-list/socia
     HomeComponent,
     AuthComponent,
     NavbarComponent,
-    SocialMediaListComponent
+    SocialMediaListComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
