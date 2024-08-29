@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './layouts/home/home.component';
-import { AuthComponent } from './layouts/auth/auth.component';
 import { SigninComponent } from './modules/auth/signin/signin.component';
 import { SignupComponent } from './modules/auth/signup/signup.component';
 

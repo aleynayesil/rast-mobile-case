@@ -5,24 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './layouts/home/home.component';
 import { AuthComponent } from './layouts/auth/auth.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { SocialMediaListComponent } from './modules/home/social-media-list/social-media-list.component';
-import { SigninComponent } from './modules/auth/signin/signin.component';
-import { SignupComponent } from './modules/auth/signup/signup.component';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AuthComponent,
-    NavbarComponent,
-    SocialMediaListComponent,
-    SigninComponent,
-    SignupComponent
+    AuthComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    AuthModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
