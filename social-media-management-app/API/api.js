@@ -10,17 +10,20 @@ env.config();
 const app = express();
 
 //Dışarıdan gönderilen verilein sorunsuz yazılabilbesi için gerekli işlemler
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: ["http://localhost:4200"]
+}));
 app.use(express.json());
 app.use(express.urlencoded());
 
 app.use('/api', authRouter);
 app.use('/api', crudRouter);
 
-const PORT = process.env.PORT || 4200;
+const PORT = process.env.PORT || 3000;
 
 db();
 
 app.listen(PORT, () => {
-    console.log("Server Connect: 4200");
+    console.log("Server Connect: 3000");
 });

@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"deneme\",\n    \"url\" : \"deneme.com\",\n    \"description\" : \"deneme\"\n}",
+							"raw": "{\n    \"name\" : \"social media name\",\n    \"url\" : \"url.com\",\n    \"description\" : \"social media description\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,12 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4200/api/createNewAccount",
+							"raw": "http://localhost:3000/api/createNewAccount",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"createNewAccount"
@@ -44,12 +44,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4200/api/getAccounts",
+							"raw": "http://localhost:3000/api/getAccounts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"getAccounts"
@@ -64,16 +64,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4200/api/getAccount/66cde6b4d4c510af65e7261c",
+							"raw": "http://localhost:3000/api/getAccount/66d1ba9d7e43063625e5902c",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"getAccount",
-								"66cde6b4d4c510af65e7261c"
+								"66d1ba9d7e43063625e5902c"
 							]
 						}
 					},
@@ -86,7 +86,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"deneme1\",\n    \"url\" : \"deneme.com\",\n    \"description\" : \"deneme\"\n}",
+							"raw": "{\n    \"name\" : \"social media name1\",\n    \"url\" : \"url.com\",\n    \"description\" : \"social media description\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -94,16 +94,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4200/api/updateAccount/66cde6b4d4c510af65e7261c",
+							"raw": "http://localhost:3000/api/updateAccount/66d1ba9d7e43063625e5902c",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"updateAccount",
-								"66cde6b4d4c510af65e7261c"
+								"66d1ba9d7e43063625e5902c"
 							]
 						}
 					},
@@ -115,16 +115,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4200/api/deleteAccount/66cde6b4d4c510af65e7261c",
+							"raw": "http://localhost:3000/api/deleteAccount/66d1ba9d7e43063625e5902c",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"deleteAccount",
-								"66cde6b4d4c510af65e7261c"
+								"66d1ba9d7e43063625e5902c"
 							]
 						}
 					},
@@ -150,12 +150,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4200/api/register",
+							"raw": "http://localhost:3000/api/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"register"
@@ -179,12 +179,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4200/api/login",
+							"raw": "http://localhost:3000/api/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4200",
+							"port": "3000",
 							"path": [
 								"api",
 								"login"

@@ -8,7 +8,8 @@ import { AuthComponent } from './layouts/auth/auth.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { HomeModule } from './modules/home/home.module';
-
+import { HttpClientModule } from '@angular/common/http'
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,8 @@ import { HomeModule } from './modules/home/home.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    CommonModule,
     SharedModule,
     AuthModule,
     HomeModule

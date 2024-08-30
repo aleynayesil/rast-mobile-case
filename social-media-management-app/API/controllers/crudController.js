@@ -1,4 +1,4 @@
-const crud = require('../models/crud.js');
+
 const CrudSchema = require('../models/crud.js');
 
 const getAccounts = async(req,res) => {
@@ -46,7 +46,7 @@ const deleteAccount = async(req, res) => {
     try {
         const {id} = req.params;
 
-        const deleteAccount = await CrudSchema.findByIdAndDelete(id);
+        await CrudSchema.findByIdAndDelete(id);
 
         res.status(201).json({
             message: "Silme işleminiz başarılı."

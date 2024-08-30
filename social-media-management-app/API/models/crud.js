@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const CrudSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        trim: true
+    },
     name: {
         type: String,
         required: true,
@@ -20,6 +24,8 @@ const CrudSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
     }
-})
+},{
+    versionKey: false
+});
 
 module.exports = mongoose.model('crud', CrudSchema);

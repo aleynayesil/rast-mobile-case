@@ -1,5 +1,6 @@
 .management-table{
     width: 1581px;
+    max-width: 100%;
     height: 841px;
     border-radius: 6px;
     margin: 0 auto;
@@ -100,6 +101,9 @@
         }
         .table-section{
             width: 1430px;
+            max-width: 100%;
+            table-layout:fixed;
+            border-collapse: collapse;
             .table{
                 border-radius: 8px;
                 border: 1px solid #EAEAEA;
@@ -175,4 +179,31 @@
                 margin: 20px 0;
             }
         }
+}
+@media only screen and (max-width: 1000px) {
+    .table-header{
+      .search-group{
+        .search{
+            width: 300px !important;
+        }
+      }
+    }
+}
+@media only screen and (max-width: 700px) {
+    .table-header{
+      .search-group{
+        .search{
+            width: 180px !important;
+        }
+      }
+      .new-account{
+          .btn{
+            width: 50px !important;
+              span{
+                  display: none !important;
+              }
+          }
+      }
+    }
+   
 }

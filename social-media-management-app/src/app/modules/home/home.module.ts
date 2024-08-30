@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { SocialMediaListComponent } from "src/app/modules/home/social-media-list/social-media-list.component";
 
@@ -6,7 +7,7 @@ import { SocialMediaListComponent } from "src/app/modules/home/social-media-list
         SocialMediaListComponent
     ],
     imports: [
-
+        CommonModule
     ],
     exports: [
         SocialMediaListComponent
