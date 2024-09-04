@@ -1,18 +1,31 @@
-<div class="container">
-    <div class="form-box">
-        <form class="form">
-            <h1 class="form--title">Sign In</h1>
-    
-            <input type="text" class="form-control" formControlName="email">
-    
-            <button type="submit" class="btn">
-              Sign in
-            </button>
-    
-            <div class="form--text">
-              Don\'t have an account? &nbsp;
-              <a routerLink="/auth/signup">Sign Up</a>
-            </div>
-          </form>
+<div class="container-form">
+  <img src="../../../../assets/images/brand.png" alt="logo" class="logo">
+  <div class="form-box">
+    <div class="form-header">
+      <span>Kayıt Olunuz</span>
     </div>
+    <div class="form-content">
+      <form #form="ngForm" (ngSubmit)="register(form)">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="input" #email="ngModel" ngModel email required>
+        <span *ngIf="email.invalid && (email.dirty || email.touched)">
+          <span ngClass="valid" *ngIf="email.errors?.['required']">{{'Email adresinizi girmelisiniz!' | titlecase}}</span>
+          <span ngClass="valid" *ngIf="email.errors?.['email']">{{'geçerli bir e-mail giriniz!' | titlecase}}</span>
+        </span>
+        <label for="password">Password</label>
+        <input type="password" name="password" class="input" #password="ngModel" ngModel required minlength="6">
+        <span *ngIf="password.invalid && (password.dirty || password.touched)">
+          <span ngClass="valid" *ngIf="password.errors?.['required']">{{'Parolanızı girmelisiniz!' | titlecase}}</span>
+          <span ngClass="valid" *ngIf="password.errors?.['minlength']">{{ 'Parola 6 karakterden az olamaz!' | titlecase}}</span>
+        </span>
+      </form>
+    </div>
+    <div class="form-footer">
+      <span>{{ 'zaten hesabım var' | titlecase }}
+        <a class="login" [routerLink]="['/api/login']" routerLinkActive="router-link-active">Giriş Yap
+        </a>
+      </span>
+      <button class="register" (click)="register(form)">Kayıt Ol</button>
+    </div>
+  </div>
 </div>

@@ -1,9 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Crud } from "../models/crud";
-import { map, Observable } from "rxjs";
+import { BehaviorSubject, map, Observable, take, tap } from "rxjs";
+import { Sorting } from "../models/sorting";
 
-@Injectable() //component oluşturulduğunda constractur içerisine inject edebilmek için
+@Injectable() 
 export class CrudService{
     private url = "http://localhost:3000/api";
 
@@ -11,22 +12,27 @@ export class CrudService{
         private http: HttpClient
     ){}
 
-    getAccounts(): Observable<Crud[]>{
-        return this.http.get<Crud[]>(this.url + '/getAccounts')
+    getAccounts(sorting: Sorting,searchValue: string, page: number, limit: number): Observable<Crud[]>{
+        return this.http.get<Crud[]>(this.url + '/getAccounts' + 
+            `?sort=${sorting.order}&name=${searchValue}&page=${page}&limit=${limit}`)
         .pipe(
-            map((data : any) => data.getAccounts)
+            map((data:any) => data.getAccounts)
         );
+    }
+
+    getAccount(_id: string): Observable<Crud>{
+        return this.http.get<Crud>(this.url + '/getAccount/' + _id);
     }
 
     createNewAccount(crud: Crud): Observable<Crud>{
         return this.http.post<Crud>(this.url + '/createNewAccount' , crud);
     }
 
-    updateAccount(crud: Crud): Observable<Crud>{
-        return this.http.patch<Crud>(this.url + '/updateAccount' + crud.id , crud);
+    updateAccount(crud: Crud, _id: string): Observable<Crud>{
+        return this.http.patch<Crud>(this.url + '/updateAccount/' + crud._id , crud);
     }
 
-    deleteAccount(id:string){
-        return this.http.delete(this.url + '/deleteAccount' + id);
+    deleteAccount(_id: string){
+        return this.http.delete(this.url + '/deleteAccount/' + _id);
     }
 }

@@ -1,22 +1,23 @@
 <div class="management-table">
     <div class="table-header">
         <div class="search-group">
-            <input type="text" class="search" placeholder="Search">
-            <button class="btn-search">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.6 16.2C12.7974 16.2 16.2 12.7974 16.2 8.6C16.2 4.40263 12.7974 1 8.6 1C4.40263 1 1 4.40263 1 8.6C1 12.7974 4.40263 16.2 8.6 16.2Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16.6 17L15 15.4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>                    
-            </button>
+            <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()" (input)="changeSearchValue($event)">
+                <input type="text" placeholder="Search" class="search" formControlName="searchValue">
+                <button type="submit" class="btn-search">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.6 16.2C12.7974 16.2 16.2 12.7974 16.2 8.6C16.2 4.40263 12.7974 1 8.6 1C4.40263 1 1 4.40263 1 8.6C1 12.7974 4.40263 16.2 8.6 16.2Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.6 17L15 15.4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                    
+                </button>
+            </form>
             <button class="btn-filter">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M16 1C16 0.447715 15.5523 0 15 0H1C0.447715 0 0 0.447715 0 1V2.58579C0 2.851 0.105357 3.10536 0.292893 3.29289L4.7071 7.7071C4.89464 7.89464 4.99999 8.14899 4.99999 8.41421V15.3063C4.99999 15.6476 5.33434 15.8886 5.65811 15.7806L10.6581 14.114C10.8623 14.0459 11 13.8548 11 13.6396V8.41422C11 8.149 11.1054 7.89465 11.2929 7.70711L15.7071 3.29289C15.8946 3.10536 16 2.851 16 2.58579V1Z" fill="#744BFC"/>
                 </svg>
             </button>
-                
         </div>
         <div class="new-account">
-            <button class="btn">
+            <button class="btn" (click)="newAccount()">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 1L7 13" stroke="white" stroke-width="2" stroke-linecap="round"/>
                     <path d="M13 7L1 7" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -28,32 +29,90 @@
     <div class="table-section">
         <table class="table">
             <thead>
-                <tr class="tr-head">
-                    <th class="tb-head" *ngFor="let column of columns">
+                <tr>
+                    <th *ngFor="let column of columns" class="table-head-cell" (click)="sort()">
                         <div>
                             <span>{{ column | titlecase }}</span>
-                            <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.98602 5L4.98602 19" stroke="#744BFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M4.78241 0.285875L0.900427 5.73587C0.523197 6.26547 0.901813 7 1.55203 7L8.42004 7C9.07025 7 9.44887 6.26547 9.07164 5.73587L5.18966 0.285875C5.08998 0.145929 4.88209 0.145929 4.78241 0.285875Z" fill="#744BFC"/>
-                            </svg>  
-                        </div>                      
+                            <span *ngIf="isDescSorting()">
+                                <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.98604 15L4.98604 1" stroke="#C0B8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M5.18965 19.7141L9.07163 14.2641C9.44886 13.7345 9.07025 13 8.42003 13L1.55202 13C0.901807 13 0.523193 13.7345 0.900422 14.2641L4.7824 19.7141C4.88208 19.8541 5.08997 19.8541 5.18965 19.7141Z" fill="#C0B8DC"/>
+                                </svg>                        
+                            </span>
+                            <span *ngIf="isAscSorting()">
+                                <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.98602 5L4.98602 19" stroke="#744BFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.78241 0.285875L0.900427 5.73587C0.523197 6.26547 0.901813 7 1.55203 7L8.42004 7C9.07025 7 9.44887 6.26547 9.07164 5.73587L5.18966 0.285875C5.08998 0.145929 4.88209 0.145929 4.78241 0.285875Z" fill="#744BFC"/>
+                                </svg> 
+                            </span>
+                        </div>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="tr-row" *ngFor="let account of accounts">
-                    <td class="tb-data">{{ account.url }}</td>
-                    <td class="tb-data">{{ account.name }}</td>
-                    <td class="tb-data">{{ account.description }}</td>
+                <tr *ngFor="let account of accounts">
+                    <td class="table-body-cell">
+                        <a href="{{account.url}}" >{{ account.url | summary:25}}</a>
+                    </td>
+                    <td class="table-body-cell">{{ account.name | titlecase}}</td>
+                    <td class="table-body-cell">{{ account.description | summary:15 }}</td>
+                    <td class="table-body-cell">
+                        <div class="actions">
+                            <a class="update" (click)="editAccount(account)">
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" fill="#744BFC"/>
+                                </svg>
+                            </a>
+                            <a class="delete" (click)="deleteAccount(account._id)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 6L6 18" stroke="#33363F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 6L18 18" stroke="#33363F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <div class="table-footer">
-            <div class="rows">
-                <span>Show</span>
-                <Option></Option>
-            </div>
-            <div class="pagi">1 2 3</div>
+    </div>
+    <div class="table-footer">
+        <div class="page">
+            <span>{{ 'show:' | titlecase}}</span>
+            <select id="select">    
+                <option value="2">2</option>
+                <option value="2">4</option>
+                <option value="2">2</option>
+                <option value="2">10</option>
+            </select>
+        </div>
+        <div class="pagi">
+            <button class="arrow" (click)="previousPage()" [disabled]="currentPage === 1">
+                <span *ngIf="currentPage === 1">
+                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 13L2 7L8 0.999999" stroke="#C9C9C9" stroke-width="2"/>
+                    </svg>   
+                </span>
+                <span *ngIf="currentPage > 1">
+                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 13L2 7L8 0.999999" stroke="#744BFC" stroke-width="2"/>
+                    </svg>   
+                </span>
+            </button>
+            <span [ngClass]="{active: currentPage}">{{ currentPage }} of {{ totalPages }}</span>
+            <button class="arrow" (click)="nextPage()" [disabled]="currentPage === totalPages">
+                <span *ngIf="currentPage < totalPages">
+                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 0.999999L7 7L0.999999 13" stroke="#744BFC" stroke-width="2"/>
+                    </svg> 
+                </span>  
+                <span *ngIf="currentPage === totalPages">
+                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 0.999999L7 7L0.999999 13" stroke="#C9C9C9" stroke-width="2"/>
+                    </svg>   
+                </span>                 
+            </button>
         </div>
     </div>
 </div>
+
+<app-modal *ngIf="open" [model]="model" [editing]="editing" (hideModalEvent)="hideModal()"></app-modal>

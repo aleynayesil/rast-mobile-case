@@ -1,0 +1,26 @@
+<div class="modal">
+   
+    <div class="header">
+        <button class="close" (click)="hideModal()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="#33363F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#33363F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+    <div class="content">
+        <form (ngSubmit)="saveModal()">
+            <label for="url">Sosyal Medya Linki</label>
+            <input type="text" name="url" class="input" [(ngModel)]="model.url" appInputEmail>
+            <label for="name">Sosyal Medya Adı</label>
+            <input type="text" name="name" class="input" [(ngModel)]="model.name">
+            <label for="description">Açıklama</label>
+            <input type="text" name="description" class="input" [(ngModel)]="model.description">
+        </form>
+    </div>
+    <div class="actions">
+        <button class="cancel" (click)="hideModal()">Vazgeç</button>
+        <button class="save" *ngIf="!editing" (click)="saveModal()">Kaydet</button>
+        <button class="save" *ngIf="editing" (click)="updateAccount(model._id,model)">Güncelle</button>
+    </div>
+</div>

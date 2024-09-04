@@ -20,6 +20,22 @@
                     text-transform: uppercase;
                 }
             }
+            .logOut{
+                background: #744BFC;
+                padding: 12px;
+                border-radius: 16px;
+                transition: .3s;
+                border: 1px solid #744BFC;
+                a{
+                    color: #fff;
+                }&:hover{
+                    background: #fff;
+                    border: 1px solid #744BFC;
+                    a{
+                        color: #744BFC;
+                    }
+                }
+            }
         }
 
         .socials{
@@ -36,5 +52,12 @@
                 }
             }
         }
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    .socials{
+        display: none;
     }
 }

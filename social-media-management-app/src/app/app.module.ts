@@ -10,6 +10,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { HomeModule } from './modules/home/home.module';
 import { HttpClientModule } from '@angular/common/http'
 import { CommonModule } from '@angular/common';
+import { AuthService } from './core/services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,7 @@ import { CommonModule } from '@angular/common';
     AuthModule,
     HomeModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

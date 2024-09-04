@@ -20,8 +20,8 @@
             <li class="menu-links">
                 <a class="link" href="#">Word Ninja</a>
             </li>
-            <li class="menu-links">
-                <a class="link" href="#">Word Pyramids</a>
+            <li class="menu-links logOut">
+                <a *ngIf="isAuthenticated" [routerLink]="isAuthenticated ? ['/api/login'] : []" class="link" (click)="logOut()">LogOut</a>
             </li>
         </ul>
 

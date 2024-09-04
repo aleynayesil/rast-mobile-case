@@ -1,7 +1,7 @@
 export interface Crud{
-    id:string;
+    _id:string;
     name: string;
     url: string;
     description: string;
-    date: Date
+    date: Date;
 }
