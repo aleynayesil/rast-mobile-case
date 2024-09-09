@@ -3,7 +3,6 @@ import { FormBuilder, NgModel } from '@angular/forms';
 import { Crud } from 'src/app/core/models/crud';
 import { Sorting } from 'src/app/core/models/sorting';
 import { CrudService } from 'src/app/core/services/crud.service';
-import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
 @Component({
   selector: 'app-social-media-list',
@@ -33,7 +32,7 @@ export class SocialMediaListComponent implements OnInit {
 
   currentPage: number = 1;
 
-  limit:number = 4;
+  limit:number = 8;
 
   totalPages:number = 4;
 
@@ -56,12 +55,12 @@ export class SocialMediaListComponent implements OnInit {
     this.crudService.getAccounts(
       this.sorting,
       this.searchValue,
-      this.currentPage,
+      this.page=this.currentPage,
       this.limit)
-      .subscribe((data) => {
-      this.accounts = data;
-    });
-  }
+      .subscribe(data => {
+        this.accounts = data;
+      });
+      }
   
   isDescSorting(): boolean{
     return  this.sorting.order === 'desc';
@@ -79,7 +78,7 @@ export class SocialMediaListComponent implements OnInit {
     this.getAccounts();
   }
 
-  onSearchSubmit(): void{
+  onSearchSubmit(): void{ //liste içerisinde search inputun da submit olunduğunda arama yapar
     this.searchValue = this.searchForm.value.searchValue ?? '';
     this.getAccounts();
   }
@@ -87,10 +86,6 @@ export class SocialMediaListComponent implements OnInit {
   changeSearchValue(eventData: Event){
     this.searchValue = (<HTMLInputElement>eventData.target).value;
     this.getAccounts();
-  }
-
-  changePage(page: number): void{
-    this.currentPage = page;
   }
 
   previousPage() {
@@ -111,11 +106,11 @@ export class SocialMediaListComponent implements OnInit {
     this.open = false;
   }
 
-  newAccount(){
+  newAccount(){ // Yeni hesap eklemek için modalı açar
     this.open = true;
   }
   
-  editAccount(crud: Crud){
+  editAccount(crud: Crud){ //Varolan bir hesabı güncellemeyi sağlayan modalı açar
     this.open = true;
     this.editing = true;
     this.model = crud;
@@ -129,4 +124,8 @@ export class SocialMediaListComponent implements OnInit {
     this.getAccounts();
   }
 
+  changeLimit(e:any){
+    this.limit = e.target.value;
+    this.getAccounts();
+  }
 }

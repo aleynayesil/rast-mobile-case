@@ -1,9 +1,9 @@
 import { Directive, ElementRef, HostListener } from "@angular/core";
 
 @Directive({
-    selector: '[appInputEmail]'
+    selector: '[appInput]'
 })
-export class EmailDirective{
+export class LinkDirective{
 
     constructor(
         private element: ElementRef

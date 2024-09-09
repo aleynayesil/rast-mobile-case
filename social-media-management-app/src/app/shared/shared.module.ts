@@ -5,14 +5,14 @@ import { ModalComponent } from './modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { SummaryPipe } from "./pipes/summary.pipe";
-import { EmailDirective } from "./directives/link-validator.directive";
+import { LinkDirective } from "./directives/link-validator.directive";
 
 @NgModule({
     declarations: [
         NavbarComponent,
         ModalComponent,
         SummaryPipe,
-        EmailDirective
+        LinkDirective
     ],
     imports: [
         RouterModule,
@@ -24,7 +24,7 @@ import { EmailDirective } from "./directives/link-validator.directive";
         NavbarComponent,
         ModalComponent,
         SummaryPipe,
-        EmailDirective
+        LinkDirective
     ]
 })
 export class SharedModule{
